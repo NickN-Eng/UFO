@@ -45,6 +45,7 @@ class BaseOpenAIService(BaseService):
             self.config_llm.get("API_VERSION", ""),
             aad_api_scope_base=self.config_llm.get("AAD_API_SCOPE_BASE", ""),
             aad_tenant_id=self.config_llm.get("AAD_TENANT_ID", ""),
+            aad_auth_method=self.config_llm.get("AAD_AUTH_METHOD", "device_code"),
         )
 
     def _chat_completion(
@@ -77,6 +78,14 @@ class BaseOpenAIService(BaseService):
         max_tokens = max_tokens if max_tokens is not None else self.config["MAX_TOKENS"]
         top_p = top_p if top_p is not None else self.config["TOP_P"]
 
+        # GPT-5 models require max_completion_tokens instead of max_tokens
+        # GPT-5 models also don't support custom temperature/top_p (only default value of 1)
+        is_gpt5_model = "gpt-5" in model.lower()
+        token_param_name = "max_completion_tokens" if is_gpt5_model else "max_tokens"
+
+        # Get reasoning_effort for GPT-5 models (minimal, low, medium, high)
+        reasoning_effort = self.config.get("REASONING_EFFORT", "medium") if is_gpt5_model else None
+
         try:
             if self.config_llm.get("REASONING_MODEL", False):
                 response: Any = self.client.chat.completions.create(
@@ -88,30 +97,59 @@ class BaseOpenAIService(BaseService):
                 )
             else:
                 if not stream:
-                    response: Any = self.client.chat.completions.create(
-                        model=model,
-                        messages=messages,  # type: ignore
-                        n=1,
-                        temperature=temperature,
-                        max_tokens=max_tokens,
-                        top_p=top_p,
-                        stream=stream,
-                        **kwargs,
-                    )
+                    if is_gpt5_model:
+                        # GPT-5 models don't support temperature/top_p parameters but support reasoning_effort
+                        api_params = {
+                            "model": model,
+                            "messages": messages,  # type: ignore
+                            "n": 1,
+                            token_param_name: max_tokens,
+                            "stream": stream,
+                        }
+                        if reasoning_effort:
+                            api_params["reasoning_effort"] = reasoning_effort
+                        response: Any = self.client.chat.completions.create(**api_params, **kwargs)
+                    else:
+                        response: Any = self.client.chat.completions.create(
+                            model=model,
+                            messages=messages,  # type: ignore
+                            n=1,
+                            temperature=temperature,
+                            **{token_param_name: max_tokens},
+                            top_p=top_p,
+                            stream=stream,
+                            **kwargs,
+                        )
                 else:
-                    response: Any = self.client.chat.completions.create(
-                        model=model,
-                        messages=messages,  # type: ignore
-                        n=1,
-                        temperature=temperature,
-                        max_tokens=max_tokens,
-                        top_p=top_p,
-                        stream=stream,
-                        stream_options={
-                            "include_usage": True,
-                        },
-                        **kwargs,
-                    )
+                    if is_gpt5_model:
+                        # GPT-5 models don't support temperature/top_p parameters but support reasoning_effort
+                        api_params = {
+                            "model": model,
+                            "messages": messages,  # type: ignore
+                            "n": 1,
+                            token_param_name: max_tokens,
+                            "stream": stream,
+                            "stream_options": {
+                                "include_usage": True,
+                            },
+                        }
+                        if reasoning_effort:
+                            api_params["reasoning_effort"] = reasoning_effort
+                        response: Any = self.client.chat.completions.create(**api_params, **kwargs)
+                    else:
+                        response: Any = self.client.chat.completions.create(
+                            model=model,
+                            messages=messages,  # type: ignore
+                            n=1,
+                            temperature=temperature,
+                            **{token_param_name: max_tokens},
+                            top_p=top_p,
+                            stream=stream,
+                            stream_options={
+                                "include_usage": True,
+                            },
+                            **kwargs,
+                        )
             # response: Any = self.client.chat.completions.create(
             #     model=model,
             #     messages=messages,  # type: ignore
@@ -230,6 +268,7 @@ class BaseOpenAIService(BaseService):
         api_version: Optional[str] = None,
         aad_api_scope_base: Optional[str] = None,
         aad_tenant_id: Optional[str] = None,
+        aad_auth_method: Optional[str] = None,
     ) -> OpenAI:
         """
         Create an OpenAI client based on the API type.
@@ -241,6 +280,7 @@ class BaseOpenAIService(BaseService):
         :param api_version: The API version for the Azure OpenAI API.
         :param aad_api_scope_base: The AAD API scope base for the Azure OpenAI API.
         :param aad_tenant_id: The AAD tenant ID for the Azure OpenAI API.
+        :param aad_auth_method: Preferred Azure AD authentication method: "device_code", "browser", or "auto" (default).
         :return: The OpenAI client.
         """
         if api_type == "openai":
@@ -267,9 +307,24 @@ class BaseOpenAIService(BaseService):
                 assert (
                     aad_api_scope_base and aad_tenant_id
                 ), "AAD API scope base and tenant ID must be specified"
+
+                # Determine authentication method flags based on preference
+                use_device_code_flag = None
+                use_broker_login_flag = None
+
+                if aad_auth_method == "device_code":
+                    use_device_code_flag = True
+                    use_broker_login_flag = False
+                elif aad_auth_method == "browser":
+                    use_device_code_flag = False
+                    use_broker_login_flag = True
+                # If aad_auth_method is None or "auto", let the function use implicit mode
+
                 token_provider = OpenAIService.get_aad_token_provider(
                     aad_api_scope_base=aad_api_scope_base,
                     aad_tenant_id=aad_tenant_id,
+                    use_device_code=use_device_code_flag,
+                    use_broker_login=use_broker_login_flag,
                 )
                 client = AzureOpenAI(
                     max_retries=max_retry,
@@ -320,10 +375,16 @@ class BaseOpenAIService(BaseService):
         )
         from azure.identity.broker import InteractiveBrowserBrokerCredential
 
-        api_scope_base = "api://" + aad_api_scope_base
+        # Support both Azure Cognitive Services (standard) and custom API app scopes
+        if aad_api_scope_base.startswith("http://") or aad_api_scope_base.startswith("https://"):
+            # Azure Cognitive Services scope (e.g., "https://cognitiveservices.azure.com")
+            scope = aad_api_scope_base if aad_api_scope_base.endswith("/.default") else aad_api_scope_base + "/.default"
+        else:
+            # Custom API app scope (original behavior for custom apps)
+            api_scope_base = "api://" + aad_api_scope_base
+            scope = api_scope_base + "/.default"
 
         tenant_id = aad_tenant_id
-        scope = api_scope_base + "/.default"
 
         token_cache_option = TokenCachePersistenceOptions(
             name=token_cache_file,
