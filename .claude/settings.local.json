@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(python -m learner:*)",
+      "Bash(dir \"C:\\Users\\nniem\\source\\repos\\UFO\\vectordb\\docs\")",
+      "Bash(dir:*)",
+      "Bash(python:*)",
+      "Bash(.venv/Scripts/python.exe:*)"
+    ]
+  }
+}

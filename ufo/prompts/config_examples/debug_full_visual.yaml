@@ -1,0 +1,62 @@
+# UFO Full Visual Context Configuration
+# Use case: Complex UI tasks, debugging, research
+# Trade-off: Slowest execution, highest costs, best debugging capabilities
+
+# ============================================
+# SCREENSHOT OPTIMIZATION (Everything enabled)
+# ============================================
+INCLUDE_LAST_SCREENSHOT: True           # Full context
+CONCAT_SCREENSHOT: False                # Both clean + annotated (2 images)
+SAVE_FULL_SCREEN: True                  # Full desktop capture
+SAVE_UI_TREE: True                      # Save UI trees
+LOG_XML: True                           # Save XML dumps
+
+# ============================================
+# IMAGE COMPRESSION (Fast saving)
+# ============================================
+DEFAULT_PNG_COMPRESS_LEVEL: 1           # Fast saving (default)
+
+# ============================================
+# CONTROL FILTERING (No filtering)
+# ============================================
+CONTROL_FILTER_TYPE: []                 # Show all controls
+CONTROL_FILTER_TOP_K_PLAN: 2
+CONTROL_FILTER_TOP_K_SEMANTIC: 15       # Default
+
+# ============================================
+# PERFORMANCE SETTINGS (Default)
+# ============================================
+SLEEP_TIME: 1
+AFTER_CLICK_WAIT: 0
+REQUEST_TIMEOUT: 250
+INPUT_TEXT_INTER_KEY_PAUSE: 0.05
+
+# ============================================
+# API AUTOMATION
+# ============================================
+USE_APIS: True
+APP_API_PROMPT_ADDRESS:
+  "WINWORD.EXE": "ufo/prompts/apps/word/api.yaml"
+  "EXCEL.EXE": "ufo/prompts/apps/excel/api.yaml"
+  "POWERPNT.EXE": "ufo/prompts/apps/powepoint/api.yaml"
+  "msedge.exe": "ufo/prompts/apps/web/api.yaml"
+  "chrome.exe": "ufo/prompts/apps/web/api.yaml"
+
+# ============================================
+# CONTROL BACKEND (All methods)
+# ============================================
+CONTROL_BACKEND: ["uia"]                # Can add "omniparser" if needed
+
+# ============================================
+# STEP LIMITS
+# ============================================
+MAX_STEP: 30
+MAX_ROUND: 1
+
+# ============================================
+# LOGGING (Full verbosity)
+# ============================================
+PRINT_LOG: True
+LOG_LEVEL: "DEBUG"
+LOG_TO_MARKDOWN: True
+SCREENSHOT_TO_MEMORY: True

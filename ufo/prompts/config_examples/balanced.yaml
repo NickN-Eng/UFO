@@ -1,0 +1,62 @@
+# UFO Balanced Performance Configuration
+# Use case: Mixed UI + API automation, moderate cost sensitivity
+# Expected: 30-40% faster, 40-50% lower vision costs
+
+# ============================================
+# SCREENSHOT OPTIMIZATION
+# ============================================
+INCLUDE_LAST_SCREENSHOT: True           # Keep screenshots for context
+CONCAT_SCREENSHOT: True                 # Use 1 image instead of 2 (50% savings)
+SAVE_FULL_SCREEN: False                 # Don't capture full desktop
+SAVE_UI_TREE: False                     # Don't save UI tree
+LOG_XML: False                          # Don't save XML
+
+# ============================================
+# IMAGE COMPRESSION
+# ============================================
+DEFAULT_PNG_COMPRESS_LEVEL: 6           # Good compression/speed balance
+
+# ============================================
+# CONTROL FILTERING
+# ============================================
+CONTROL_FILTER_TYPE: ["TEXT", "SEMANTIC"]  # Better control filtering
+CONTROL_FILTER_TOP_K_PLAN: 2
+CONTROL_FILTER_TOP_K_SEMANTIC: 10       # Reduce from 15
+
+# ============================================
+# PERFORMANCE SETTINGS
+# ============================================
+SLEEP_TIME: 1                           # Default
+AFTER_CLICK_WAIT: 0
+REQUEST_TIMEOUT: 200
+INPUT_TEXT_INTER_KEY_PAUSE: 0.05        # Default
+
+# ============================================
+# API AUTOMATION
+# ============================================
+USE_APIS: True
+APP_API_PROMPT_ADDRESS:
+  "WINWORD.EXE": "ufo/prompts/apps/word/api.yaml"
+  "EXCEL.EXE": "ufo/prompts/apps/excel/api.yaml"
+  "POWERPNT.EXE": "ufo/prompts/apps/powepoint/api.yaml"
+  "msedge.exe": "ufo/prompts/apps/web/api.yaml"
+  "chrome.exe": "ufo/prompts/apps/web/api.yaml"
+
+# ============================================
+# CONTROL BACKEND
+# ============================================
+CONTROL_BACKEND: ["uia"]                # UIA only (no OmniParser overhead)
+
+# ============================================
+# STEP LIMITS
+# ============================================
+MAX_STEP: 30
+MAX_ROUND: 1
+
+# ============================================
+# LOGGING (Moderate)
+# ============================================
+PRINT_LOG: False
+LOG_LEVEL: "DEBUG"
+LOG_TO_MARKDOWN: True
+SCREENSHOT_TO_MEMORY: True

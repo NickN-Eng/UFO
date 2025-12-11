@@ -1,0 +1,265 @@
+{
+  "application": "ETABS.exe",
+  "version": "v20+",
+  "instructions": [
+    {
+      "category": "modeling",
+      "request": "How to save the current ETABS model using the File menu?",
+      "guidance": [
+        "Make sure the ETABS main window is active by clicking once inside any model view so that its title bar is highlighted.",
+        "In the ETABS main window, click the 'File' menu in the top menu bar.",
+        "From the 'File' menu dropdown, click the 'Save' command near the top of the menu.",
+        "If this is the first time the model is being saved, wait for the 'Save Model File As' dialog to appear.",
+        "In the 'Save Model File As' dialog, locate the 'File name' edit box at the bottom of the window.",
+        "In the 'File name' edit box, type a descriptive model name, including the .EDB extension (for example, 'Building_Model_01.edb').",
+        "If you need to change the folder, use the folder tree on the left and the file list in the main area of the 'Save Model File As' dialog to navigate to your desired directory.",
+        "In the same dialog, check the 'Save as type' dropdown and ensure it is set to 'ETABS Model (*.EDB)' or a similar ETABS model file type.",
+        "Click the 'Save' button in the lower right corner of the 'Save Model File As' dialog to save the model.",
+        "If the model has already been saved previously, the 'File > Save' command will save directly to the existing file without opening a dialog; watch the ETABS status bar at the bottom of the main window for a brief 'Saving model' message to confirm the save."
+      ]
+    },
+    {
+      "category": "modeling",
+      "request": "How to use Save As in ETABS when you already know the full target file path?",
+      "guidance": [
+        "Ensure the ETABS model you want to save is open and the main window is active by clicking once inside any model view.",
+        "Click the 'File' menu in the top menu bar of the ETABS main window.",
+        "From the 'File' menu dropdown, click the 'Save As' command (you may see it listed as 'Save As...' in some versions).",
+        "Wait for the 'Save Model File As' dialog to appear.",
+        "In the 'Save Model File As' dialog, move to the 'File name' edit box at the bottom of the window and click inside it once so the text cursor appears.",
+        "In the 'File name' edit box, type the full Windows file path and file name for the new model file, including drive letter, folders, and the .EDB extension (for example, 'C:\\\\Projects\\\\ETABS\\\\Model_V2.edb').",
+        "Optionally review the folder tree and file list in the 'Save Model File As' dialog to verify that the folder portion of the path you typed is correct.",
+        "Check the 'Save as type' dropdown directly beneath the 'File name' edit box and make sure it is set to an ETABS model file type such as 'ETABS Model (*.EDB)'.",
+        "Click the 'Save' button in the lower right corner of the 'Save Model File As' dialog to create the new file at the specified full path.",
+        "After the dialog closes, look at the ETABS main window title bar and confirm that it now shows the new file name you specified, indicating that the active model is associated with the new path."
+      ]
+    },
+    {
+      "category": "modeling",
+      "request": "How to open an existing ETABS model when you know the full file path?",
+      "guidance": [
+        "If another model is currently open, decide whether you need to save it; if so, click the 'File' menu in the top menu bar and use 'Save' before proceeding.",
+        "With ETABS running, click the 'File' menu in the top menu bar.",
+        "From the 'File' menu dropdown, click the 'Open' command (you may see it listed as 'Open...' in some versions).",
+        "Wait for the standard Windows 'Open' dialog to appear (in some versions this dialog may be titled 'Open Model File').",
+        "In the 'Open' dialog, click inside the 'File name' edit box at the bottom so that the text cursor appears.",
+        "Type the full Windows path and file name of the ETABS model you want to open, including the .EDB extension (for example, 'D:\\\\Structures\\\\Office_Tower\\\\Tower_Model.edb').",
+        "If you want to verify the path visually, you can also use the folder tree and file list in the main area of the 'Open' dialog to navigate to the same folder and confirm that the typed file exists.",
+        "Once the full path is entered correctly in the 'File name' edit box, click the 'Open' button in the lower right corner of the 'Open' dialog.",
+        "If ETABS prompts you to save changes to the currently open model, choose the appropriate button in the confirmation dialog by clicking 'Yes' to save, 'No' to discard changes, or 'Cancel' to stop opening the new file.",
+        "Wait for ETABS to load the model; verify that the model name shown in the ETABS main window title bar matches the file you opened and that the model views update to show the correct structure."
+      ]
+    },
+    {
+      "category": "materials",
+      "request": "How to open and inspect material properties in ETABS using the Define menu?",
+      "guidance": [
+        "Ensure the ETABS main window is active by clicking inside any model view.",
+        "In the top menu bar, click the 'Define' menu to open the Define dropdown.",
+        "From the 'Define' menu dropdown, click the 'Material Properties' command (this will open the material definition dialog).",
+        "Wait for the 'Define Materials' dialog to appear on screen.",
+        "In the 'Define Materials' dialog, locate the main list box that shows all defined materials (for example, entries like 'CONC', 'STEEL', or user-defined names).",
+        "In the materials list box, click once on the material whose properties you want to review to highlight that row.",
+        "On the right side of the 'Define Materials' dialog, click the 'Modify/Show Material' button to view the detailed properties for the selected material.",
+        "Wait for the 'Material Property Data' dialog to appear; this dialog shows tabs and fields such as density, modulus of elasticity, Poisson's ratio, and design parameters.",
+        "Review the various fields and tabs in the 'Material Property Data' dialog, for example checking the basic mechanical properties and any design code-related parameters.",
+        "When you have finished reviewing the properties, click the 'OK' button at the bottom right of the 'Material Property Data' dialog to close it and return to the 'Define Materials' dialog.",
+        "Back in the 'Define Materials' dialog, click the 'OK' button in the lower right corner to close the dialog and return to the main ETABS model window."
+      ]
+    },
+    {
+      "category": "sections",
+      "request": "How to open and inspect slab section properties in ETABS using the Define menu?",
+      "guidance": [
+        "Click anywhere inside a model view in ETABS to ensure the main window is active.",
+        "In the top menu bar, click the 'Define' menu to open the Define dropdown.",
+        "From the 'Define' menu dropdown, hover over 'Section Properties' and then click the 'Slab Sections' command.",
+        "Wait for the 'Slab Properties' dialog to appear; this dialog lists all slab section definitions for the model.",
+        "In the 'Slab Properties' dialog, locate the list of slab section names in the main list area (for example, entries like 'SLAB1', 'FlatSlab_200mm', or other user-defined names).",
+        "Click once on the slab section whose properties you want to review so that its row is highlighted in the list.",
+        "On the right side of the 'Slab Properties' dialog, click the 'Modify/Show Property' button to view the detailed definition for the selected slab section.",
+        "Wait for the 'Slab Property Data' dialog to appear; this dialog shows parameters such as 'Property Name', 'Material', 'Slab Type', and thickness fields, along with any waffle or ribbed slab options if applicable.",
+        "In the 'Slab Property Data' dialog, review key fields such as the 'Property Name' edit box, the 'Material' dropdown, and the thickness-related numeric input fields (for example, the slab thickness in the current model units).",
+        "After reviewing the slab section properties, click the 'OK' button at the bottom right of the 'Slab Property Data' dialog to close it and return to the 'Slab Properties' dialog.",
+        "Back in the 'Slab Properties' dialog, click the 'OK' button in the lower right corner to close the dialog and return to the ETABS main model window."
+      ]
+    },
+    {
+      "category": "sections",
+      "request": "How to open and inspect wall section properties in ETABS using the Define menu?",
+      "guidance": [
+        "Ensure the ETABS main window is active by clicking once inside any model view.",
+        "In the top menu bar, click the 'Define' menu to open the Define dropdown.",
+        "From the 'Define' menu dropdown, hover over 'Section Properties' and then click the 'Wall Sections' command.",
+        "Wait for the 'Wall Properties' dialog to appear; this dialog lists all wall section definitions for the model.",
+        "In the 'Wall Properties' dialog, locate the list of wall section names in the main list area (for example, entries like 'WALL1', 'ShearWall_300mm', or other user-defined names).",
+        "Click once on the wall section whose properties you want to inspect so that its row is highlighted in the list.",
+        "On the right side of the 'Wall Properties' dialog, click the 'Modify/Show Property' button to open the detailed wall section definition.",
+        "Wait for the 'Wall Property Data' dialog to appear; this dialog contains fields such as 'Property Name', 'Material', thickness values, and any additional geometry or stiffness parameters for the wall section.",
+        "In the 'Wall Property Data' dialog, review key fields including the 'Property Name' edit box, the 'Material' dropdown, and the wall thickness or layer definition inputs (in the model's current units).",
+        "After reviewing the wall section properties, click the 'OK' button at the bottom right of the 'Wall Property Data' dialog to close it and return to the 'Wall Properties' dialog.",
+        "Back in the 'Wall Properties' dialog, click the 'OK' button in the lower right corner to close the dialog and return to the ETABS main model window."
+      ]
+    },
+    {
+      "category": "modeling",
+      "request": "How to set a plan view at a specific story level in ETABS?",
+      "guidance": [
+        "Identify the graphical window in ETABS where you want to show the plan view and click anywhere inside that window so that its title bar is highlighted, indicating it is the active view.",
+        "In the top menu bar, click the 'View' menu to open the View dropdown.",
+        "From the 'View' menu dropdown, click the 'Set Plan View' command (in some versions this may appear as 'Set Plan View...' with an ellipsis).",
+        "Wait for the 'Select Plan View' dialog to appear on screen.",
+        "In the 'Select Plan View' dialog, locate the 'Story' dropdown list or list box that shows all story levels in the model (for example, 'BASE', 'STORY1', 'STORY2', 'ROOF').",
+        "From the 'Story' dropdown or list, click the story level you want to view in plan (for example, select 'ROOF' to view the roof level in plan).",
+        "If the 'Select Plan View' dialog includes any additional options such as view type or display options, leave them at their default values unless you need a specific setting.",
+        "Click the 'OK' button at the bottom right of the 'Select Plan View' dialog to apply your selection.",
+        "Verify that the active ETABS window updates to a top-down plan view at the chosen story level, with the display title bar typically showing the story name you selected."
+      ]
+    },
+    {
+      "category": "modeling",
+      "request": "How to set a 3D view of the structure in ETABS using the View menu?",
+      "guidance": [
+        "Click inside the model window that you want to convert to a 3D view so that its title bar becomes highlighted, indicating it is the active view.",
+        "In the top menu bar of ETABS, click the 'View' menu to open the View dropdown.",
+        "From the 'View' menu dropdown, click the 'Set 3D View' command (in some versions this may appear as 'Set 3D View...' with an ellipsis).",
+        "Wait for the 'Set 3D View' dialog to appear on screen.",
+        "In the 'Set 3D View' dialog, locate the 'Plan Angle' numeric input field and enter a horizontal angle that gives a good isometric view (for example, type '225' degrees to look from the upper-right of the plan).",
+        "In the same dialog, locate the 'Elevation Angle' numeric input field and enter a vertical angle to control how steeply you look down on the building (for example, type '30' degrees for a typical isometric angle).",
+        "If the dialog includes an 'Aperture Angle' or similar numeric field controlling perspective, leave it at the default value or adjust it slightly if you want a wider or narrower perspective view.",
+        "Optionally, if there is a preview area or additional checkboxes for perspective versus parallel projection, select the options that match your preferred 3D display style.",
+        "Click the 'OK' button at the bottom right of the 'Set 3D View' dialog to apply the 3D view settings.",
+        "Verify that the active ETABS window now shows a 3D view of the model, allowing you to rotate, pan, and zoom around the full structure."
+      ]
+    },
+    {
+      "category": "results",
+      "request": "How to display the undeformed (original) shape of the model in ETABS?",
+      "guidance": [
+        "Identify the ETABS view in which you want to see the undeformed geometry and click inside that window so its title bar is highlighted as the active view.",
+        "In the top menu bar, click the 'Display' menu to open the Display dropdown.",
+        "From the 'Display' menu dropdown, click the 'Undeformed Shape' command (this command resets the view to show only the original model geometry without analysis deformation).",
+        "Wait for ETABS to update the active view; any previously displayed deformed shapes or force/contour diagrams should be removed so that only the undeformed model is visible.",
+        "Visually confirm that members, shells, and other objects appear in their original, undeformed positions, typically without colored contours or deformation exaggeration."
+      ]
+    },
+    {
+      "category": "loads",
+      "request": "How to display joint load assignments for a specific load pattern in ETABS and toggle numeric values on or off?",
+      "guidance": [
+        "Click inside the ETABS model window where you want to display joint loads so that the window becomes the active view.",
+        "In the top menu bar, click the 'Display' menu to open the Display dropdown.",
+        "From the 'Display' menu dropdown, hover over the 'Load Assigns' submenu, then click the 'Joint' command to display joint load assignments.",
+        "Wait for the 'Show Joint Loads' dialog to appear on screen.",
+        "In the 'Show Joint Loads' dialog, locate the 'Load Pattern' dropdown list and select the load pattern whose joint loads you want to display (for example, 'DEAD', 'LIVE', or 'WIND').",
+        "In the same dialog, find the 'Load Type' options area (a group of radio buttons) and click the option that corresponds to the type of joint loads you want to see, such as forces, displacements, or temperature loads.",
+        "Locate the 'Show Loading Values' checkbox in the 'Show Joint Loads' dialog; check this checkbox if you want numeric load values to appear next to the load arrows, or uncheck it if you only want graphical arrows without numbers.",
+        "After choosing the load pattern, load type, and the 'Show Loading Values' setting, click the 'Apply' button if you want to update the display while keeping the 'Show Joint Loads' dialog open, or click the 'OK' button to update the display and close the dialog.",
+        "Look at the active ETABS view and verify that joint loads are displayed at the nodes of your model, with arrows indicating direction and, if 'Show Loading Values' is checked, numeric values shown next to each arrow."
+      ]
+    },
+    {
+      "category": "loads",
+      "request": "How to display frame load assignments for a specific load pattern in ETABS and toggle numeric values on or off?",
+      "guidance": [
+        "Click inside the model view in ETABS where you want to see frame loads so that its title bar is highlighted as the active view.",
+        "In the top menu bar, click the 'Display' menu to open the Display dropdown.",
+        "From the 'Display' menu dropdown, hover over the 'Load Assigns' submenu, then click the 'Frame' command to display frame load assignments.",
+        "Wait for the 'Show Frame Loads' dialog to appear on screen.",
+        "In the 'Show Frame Loads' dialog, find the 'Load Pattern' dropdown list and select the load pattern whose frame loads you want to view (for example, 'DEAD', 'LIVE', or a wind or seismic pattern).",
+        "In the 'Load Type' options area, choose the appropriate radio button for the loads you want to display, such as 'Span Loading Applied Directly to the Frame Object (Forces)', 'Span Loading Applied Directly to the Frame Object (Moments)', 'All Loading that is Tributary to the Frame Object (Forces)', or 'Temperature Values'.",
+        "If you also want to see joint loads plotted together with frame loads, locate the 'Include Joint Object Loads' checkbox and check it to include joint loads, or uncheck it to hide them.",
+        "Locate the 'Show Loading Values' checkbox in the 'Show Frame Loads' dialog; check this checkbox if you want numeric values to appear along the frame elements, or uncheck it if you only want graphical arrows or distributed load markers without numbers.",
+        "When you have configured the load pattern, load type, and display options, click the 'Apply' button to update the active view while keeping the dialog open, or click the 'OK' button to update the view and close the dialog.",
+        "Inspect the active ETABS view and confirm that the chosen frame loads are displayed on the frame elements, with arrows or distribution graphics and, if 'Show Loading Values' is checked, numeric load values shown along the members."
+      ]
+    },
+    {
+      "category": "loads",
+      "request": "How to display shell load assignments for a specific load pattern in ETABS and toggle numeric values on or off?",
+      "guidance": [
+        "Click inside the ETABS view where you want to see shell loads so that the view becomes the active window.",
+        "In the top menu bar, click the 'Display' menu to open the Display dropdown.",
+        "From the 'Display' menu dropdown, hover over the 'Load Assigns' submenu, then click the 'Shell' command to display shell load assignments.",
+        "Wait for the 'Show Shell Loads' dialog to appear on screen.",
+        "In the 'Show Shell Loads' dialog, locate the 'Load Pattern' dropdown list and select the load pattern whose shell loads you want to display (for example, 'DEAD', 'LIVE', 'WIND', or another defined pattern).",
+        "In the 'Load Type' options area, choose the radio button corresponding to the type of shell load you want to view, such as 'Uniform Load Values', 'Temperature Values', or 'Wind Pressure'.",
+        "If you selected 'Uniform Load Values', locate the 'Direction' dropdown list and select the direction for the uniform load (for example, 'Gravity', 'Local 1', 'Local 2', or 'Local 3').",
+        "Locate any 'Show Loading Values' or similar checkbox in the 'Show Shell Loads' dialog; check this checkbox if you want numeric values printed on each shell element, or uncheck it if you only want graphical load arrows or shading without numeric values.",
+        "After setting the load pattern, load type, direction, and numeric display options, click the 'Apply' button to update the active view while leaving the dialog open, or click the 'OK' button to update the view and close the dialog.",
+        "Verify that the active ETABS view shows shell loads on the relevant area objects, with arrows, pressure symbols, or shading, and with numeric values visible if you enabled them."
+      ]
+    },
+    {
+      "category": "results",
+      "request": "How to display the deformed shape for a specific load case or combination in ETABS?",
+      "guidance": [
+        "Run the analysis for your ETABS model if you have not already done so, using the 'Analyze' menu so that deformed shape results are available.",
+        "Click inside the ETABS window (typically a 3D or elevation view) where you want to see the deformed shape so that the window becomes the active view.",
+        "In the top menu bar, click the 'Display' menu to open the Display dropdown.",
+        "From the 'Display' menu dropdown, click the 'Deformed Shape' command (in some versions you may see it as 'Show Deformed Shape').",
+        "Wait for the 'Deformed Shape' dialog to appear on screen.",
+        "In the 'Deformed Shape' dialog, locate the area labeled 'Load Case / Load Combination / Modal Case' or 'Case/Combo Name' and use the dropdown list or radio buttons there to select the specific load case or load combination you want to plot (for example, choose 'DEAD', 'LIVE', 'QUAKE_X', or a named combination).",
+        "If the analysis type involves multiple steps (such as nonlinear static or time-history), locate the 'Step' numeric input box in the 'Deformed Shape' dialog and enter the step number you want to display (for example, type '1' to display the first step).",
+        "Find the 'Deformation Scale Factor' or similar numeric field and either leave it on automatic scaling or type a specific scale factor (for example, '10') if you need to exaggerate or reduce the displacement visually.",
+        "If the dialog offers checkboxes for 'Show Undeformed Shape', 'Show Deformed Only', or similar, choose the option that matches how you want the geometry displayed (for example, check 'Show Undeformed Shape' to display both deformed and original outlines).",
+        "Click the 'OK' button at the bottom right of the 'Deformed Shape' dialog to apply your settings and close the dialog.",
+        "Verify that the active ETABS view now shows the deformed shape for the selected load case or combination, typically with displaced outlines and possibly colored contours depending on your display preferences."
+      ]
+    },
+    {
+      "category": "results",
+      "request": "How to display support reaction diagrams for a selected load case or combination in ETABS?",
+      "guidance": [
+        "Make sure you have already run the analysis for your ETABS model so that reaction forces are available.",
+        "Click inside the model view (often a plan or 3D view at the base level) where you want to display reaction forces so that the view is active.",
+        "In the top menu bar, click the 'Display' menu to open the Display dropdown.",
+        "From the 'Display' menu dropdown, hover over the 'Force/Stress Diagrams' submenu, then click the 'Support/Spring Reactions' command (this may appear as 'Support/Spring reactions...' in some versions).",
+        "Wait for the reaction forces dialog (commonly titled 'Point Object Reaction Forces') to appear on screen.",
+        "In the reaction forces dialog, locate the 'Load' or 'Case/Combo Name' dropdown list and select the specific load case or load combination whose support reactions you want to display (for example, 'DEAD', 'SERVICE_COMBO_1', or 'ULS_COMBO_2').",
+        "If the dialog contains options for which components to plot (for example, vertical reactions, horizontal reactions, or resultant reactions), select the component or components you want to display using the corresponding checkboxes or radio buttons.",
+        "Locate any diagram display options such as 'Show Values' or 'Show Values on Diagram'; check this option if you want numeric reaction values (for example, kN or kips) printed at the supports, or uncheck it if you only want arrows without numbers.",
+        "If there are scaling controls (such as 'Auto Scale' versus a user-defined scale factor), either leave the scaling on automatic or type a specific scale factor into the scale numeric field if you want larger or smaller reaction arrows.",
+        "Click the 'OK' button at the bottom right of the reaction forces dialog to apply your settings and close the dialog.",
+        "Inspect the active ETABS view and verify that reaction arrows are displayed at support or spring locations, with directions and magnitudes matching the selected load case or combination and showing numeric values if you enabled them."
+      ]
+    },
+    {
+      "category": "results",
+      "request": "How to display frame force diagrams (axial, shear, and moment) for a selected load case or combination in ETABS?",
+      "guidance": [
+        "Confirm that analysis has been run for your ETABS model so that internal force results are available for frame elements.",
+        "Click inside a suitable model view (often a frame elevation or 3D view) where you want to display frame force diagrams so that the view becomes the active window.",
+        "In the top menu bar, click the 'Display' menu to open the Display dropdown.",
+        "From the 'Display' menu dropdown, hover over the 'Force/Stress Diagrams' submenu, then click the 'Frame/Pier/Spandrel/Link Forces' command (this may be labeled with an ellipsis such as 'Frame/Pier/Spandrel/Link Forces...').",
+        "Wait for the 'Member Force Diagram for Frames' dialog to appear on screen (some versions may use a similar title such as 'Frame/Pier/Spandrel/Link Forces').",
+        "In the frame forces dialog, locate the 'Load Case/Load Combination/Modal Case' area and use the dropdown list (often labeled 'Case/Combo Name' or 'Load') to select the specific load case or combination whose frame forces you want to display (for example, 'DEAD', 'LIVE', 'SEISMIC_X', or a design combination).",
+        "Find the 'Component' dropdown or list in the same dialog and choose the internal force component you want to plot, such as 'Axial Force', 'Shear 2-2', 'Shear 3-3', 'Moment 2-2', 'Moment 3-3', or 'Torsion'.",
+        "If you are checking ultimate design forces and the dialog includes options for envelope results (for example, 'Max', 'Min', or 'Max/Min' envelopes), use the corresponding radio buttons or checkboxes to select the envelope type you want to display.",
+        "Locate the diagram display options in the dialog (often including checkboxes like 'Show Values on Diagram' and 'Fill Diagram'); check 'Show Values on Diagram' if you want numeric values printed along the frame members, and optionally check or uncheck 'Fill Diagram' depending on whether you want the force diagrams shaded.",
+        "If there is a scaling control such as 'Automatic Scaling' versus 'User Defined', either leave the scaling on automatic or type a manual scale factor into the appropriate numeric input field to control the size of the shear and moment diagrams.",
+        "Click the 'OK' button at the bottom right of the frame forces dialog to apply your settings and close the dialog.",
+        "Review the active ETABS view and confirm that force diagrams are drawn along the frame elements, showing the selected component and load case or combination, with numeric values visible if you enabled 'Show Values on Diagram'."
+      ]
+    },
+    {
+      "category": "results",
+      "request": "How to display shell force or stress diagrams for slabs and walls for a selected load case or combination in ETABS?",
+      "guidance": [
+        "Ensure that the analysis has been run for your ETABS model so that shell forces and stresses are available for slab and wall area objects.",
+        "Click inside a suitable model view (typically a plan or 3D view that clearly shows the slab and wall areas) so that the view becomes the active window.",
+        "In the top menu bar, click the 'Display' menu to open the Display dropdown.",
+        "From the 'Display' menu dropdown, hover over the 'Force/Stress Diagrams' submenu, then click the 'Shell Stresses/Forces' command (this may be labeled as 'Shell stresses/Forces...' in some versions).",
+        "Wait for the 'Shell Forces/Stresses' dialog to appear on screen.",
+        "In the 'Shell Forces/Stresses' dialog, locate the 'Case/Combo Name' dropdown or edit box and select the load case or load combination whose shell forces or stresses you want to display (for example, choose 'DEAD', 'LIVE', 'SERVICE_COMBO', or 'ULS_COMBO').",
+        "Find the 'Result Type' or similar dropdown and choose whether you want to view 'Forces' or 'Stresses' for the shell elements, depending on your design check (for example, select 'Forces' for design strip forces or 'Stresses' for stress contours).",
+        "Locate the 'Component' dropdown list and select the force or stress component you want to display, such as membrane forces, bending moments (for example, M11, M22, M12), or shear forces (for example, V13, V23), according to the naming used in your ETABS version.",
+        "In the contour or diagram options area, decide how you want the results displayed; for example, choose to display filled contours, line contours, or vector diagrams depending on the options available in your version of the 'Shell Forces/Stresses' dialog.",
+        "If the dialog provides an 'Auto-Range' option and numeric fields for 'Minimum' and 'Maximum' contour values, either keep 'Auto-Range' enabled or uncheck it and type explicit minimum and maximum values into the corresponding numeric input boxes to control the color scale for the contour plot.",
+        "Locate any checkboxes for showing numeric values (for example, 'Show Values' or 'Show Values at Contour Points') and check them if you want numeric shell force or stress values printed on the shell elements, or leave them unchecked if you prefer a purely graphical contour display.",
+        "Click the 'OK' button at the bottom right of the 'Shell Forces/Stresses' dialog to apply your settings and close the dialog.",
+        "Check the active ETABS view and confirm that shell force or stress contours are displayed on the slab and wall area objects, using the selected component, case or combination, contour range, and value-label options."
+      ]
+    }
+  ]
+}

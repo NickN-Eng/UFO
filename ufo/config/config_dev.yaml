@@ -1,10 +1,10 @@
-CONTROL_BACKEND: ["uia"]  # The backend for control action, currently we support uia, win32 and onmiparser
+CONTROL_BACKEND: ["win32"]  # The backend for control action, currently we support uia, win32 and onmiparser
 
 IOU_THRESHOLD_FOR_MERGE: 0.1 # The iou threshold for merging the boxes bewteen controls detected by the UIA and Grouding model.
 
 MAX_STEP: 30  # The max step limit for completing the user request
 MAX_ROUND: 1  # The max round limit for completing the user request
-SLEEP_TIME: 1  # The sleep time between each step to wait for the window to be ready
+SLEEP_TIME: 3  # The sleep time between each step to wait for the window to be ready
 RECTANGLE_TIME: 1
 
 ACTION_SEQUENCE: False  # Whether to output the action sequence. If true, the agent may predict and execute multiple actions in one step.
@@ -94,7 +94,7 @@ CONTROL_FILTER_TOP_K_ICON: 15  # The control filter top k for icon similarity
 CONTROL_FILTER_MODEL_SEMANTIC_NAME: "all-MiniLM-L6-v2"  # The control filter model name of semantic similarity
 CONTROL_FILTER_MODEL_ICON_NAME: "clip-ViT-B-32"  # The control filter model name of icon similarity
 
-LOG_XML: False  # Whether to log the xml file for the at every step.
+LOG_XML: True  # xxxx Whether to log the xml file for the at every step.
 LOG_TO_MARKDOWN: True  # Whether to save the log to markdown file for better visualization.
 SCREENSHOT_TO_MEMORY: True  # Whether to allow the screenshot to memory for the agent's decision making.
 
@@ -115,7 +115,7 @@ DEFAULT_PNG_COMPRESS_LEVEL: 1  # The compress level for the PNG image, 0-9, 0 is
 
 
 # Save UI tree
-SAVE_UI_TREE: False  # Whether to save the UI tree at each step
+SAVE_UI_TREE: True  # xxxx Whether to save the UI tree at each step
 
 # Save full screen
 SAVE_FULL_SCREEN: False  # Whether to save the full screen at each step

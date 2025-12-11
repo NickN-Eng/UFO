@@ -1,0 +1,62 @@
+# UFO Maximum Performance Configuration
+# Use case: API-based automation, cost-sensitive, repetitive tasks
+# Expected: 60-70% faster, 80-90% lower vision costs
+
+# ============================================
+# SCREENSHOT OPTIMIZATION (Primary savings)
+# ============================================
+INCLUDE_LAST_SCREENSHOT: False          # DON'T send screenshots to LLM (95% token savings)
+CONCAT_SCREENSHOT: True                 # If enabled, use 1 image not 2
+SAVE_FULL_SCREEN: False                 # Don't capture full desktop
+SAVE_UI_TREE: False                     # Don't save UI tree JSON
+LOG_XML: False                          # Don't save XML dumps
+
+# ============================================
+# IMAGE COMPRESSION (File size optimization)
+# ============================================
+DEFAULT_PNG_COMPRESS_LEVEL: 9           # Maximum compression (64% smaller files)
+
+# ============================================
+# CONTROL FILTERING (Reduce visual clutter)
+# ============================================
+CONTROL_FILTER_TYPE: ["TEXT"]           # Filter controls by text relevance
+CONTROL_FILTER_TOP_K_PLAN: 2            # Show fewer controls
+CONTROL_FILTER_TOP_K_SEMANTIC: 10       # Top 10 controls (vs 15 default)
+
+# ============================================
+# PERFORMANCE SETTINGS
+# ============================================
+SLEEP_TIME: 0.5                         # Reduce wait between steps (from 1s)
+AFTER_CLICK_WAIT: 0                     # No extra wait after clicks
+REQUEST_TIMEOUT: 150                    # Lower timeout (from 250s)
+INPUT_TEXT_INTER_KEY_PAUSE: 0.01        # Faster typing (from 0.05s)
+
+# ============================================
+# API AUTOMATION (Bypass UI entirely)
+# ============================================
+USE_APIS: True                          # Enable native APIs for Office apps
+APP_API_PROMPT_ADDRESS:
+  "WINWORD.EXE": "ufo/prompts/apps/word/api.yaml"
+  "EXCEL.EXE": "ufo/prompts/apps/excel/api.yaml"
+  "POWERPNT.EXE": "ufo/prompts/apps/powepoint/api.yaml"
+  "msedge.exe": "ufo/prompts/apps/web/api.yaml"
+  "chrome.exe": "ufo/prompts/apps/web/api.yaml"
+
+# ============================================
+# CONTROL BACKEND (Use fastest method)
+# ============================================
+CONTROL_BACKEND: ["uia"]                # UIA only (no visual detection)
+
+# ============================================
+# STEP LIMITS
+# ============================================
+MAX_STEP: 30
+MAX_ROUND: 1
+
+# ============================================
+# LOGGING (Minimal)
+# ============================================
+PRINT_LOG: False
+LOG_LEVEL: "INFO"                       # Less verbose (not DEBUG)
+LOG_TO_MARKDOWN: False                  # Skip markdown generation
+SCREENSHOT_TO_MEMORY: False             # Don't keep in memory
